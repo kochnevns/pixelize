@@ -44,7 +44,7 @@ def get_next_square_of_pixels(x_pos, y_pos, pixel_size, pixels):
             for j in range(y_pos, y_pos + pixel_size):
                 square.append(pixels[i][j])
     except:
-        return []
+        return square
 
 
     return square
@@ -79,7 +79,10 @@ def loop():
             pixel_color = calc_average_color(square, vgas)
             for i in range(x_pos, x_pos + pixel_size):
                 for j in range(y_pos, y_pos + pixel_size):
-                    new_pixels[i].append(pixel_color)
+                    try:
+                        new_pixels[i].append(pixel_color)
+                    except:
+                        print('kek')
 
         x_pos += pixel_size
         if (x_pos >= img_x):

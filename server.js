@@ -51,6 +51,6 @@ app.post('/', upload.single('kek'), function (req, res, next) {
 	});
 });
 
-app.listen(3000, function () {
+app.listen(80, function () {
   console.log('Example app listening on port 3000!');
 });
