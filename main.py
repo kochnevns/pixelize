@@ -1,4 +1,4 @@
-from PIL import Image  
+from PIL import Image
 import random
 from time import sleep
 import sys
@@ -6,7 +6,10 @@ import numpy as np
 from os import path
 
 img = Image.open(sys.argv[1], 'r')  
-
+basewid = 400
+perc = (basewid / float(img.size[0]))
+heisize = int((float(img.size[1]) * float(perc)))
+img = img.resize((basewid, heisize), Image.ANTIALIAS)
 
 def get_vga_colors():
     colors = []
