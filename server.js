@@ -1,5 +1,19 @@
 var express = require('express');
-var app = express();
+
+var morgan = require('morgan')
+var path = require('path')
+var rfs = require('rotating-file-stream')
+
+var app = express()
+
+// create a rotating write stream
+var accessLogStream = rfs('access.log', {
+  interval: '1d', // rotate daily
+  path: path.join(__dirname, 'public/log')
+})
+
+// setup the logger
+app.use(morgan('combined', { stream: accessLogStream }))
 var multer  = require('multer');
 const { spawn } = require('child_process');
 
